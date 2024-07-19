@@ -10,7 +10,6 @@ return {
 
 		-- import mason-lspconfig
 		local mason_lspconfig = require("mason-lspconfig")
-
 		local mason_tool_installer = require("mason-tool-installer")
 
 		-- enable mason and configure icons
@@ -43,6 +42,7 @@ return {
 				"rustfmt", -- rust formatter
 				"clang-format", -- C/C++ formatter
 				"pylint", -- Python linter
+				"debugpy", -- Python debugger
 			},
 		})
 	end,
