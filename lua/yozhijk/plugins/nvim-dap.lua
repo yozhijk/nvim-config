@@ -4,7 +4,7 @@ return {
 		local dap = require("dap")
 		dap.adapters.python = {
 			type = "executable",
-			command = "/Users/yozhijk/dev/libs/miniforge3/bin/python",
+			command = "python3",
 			args = { "-m", "debugpy.adapter" },
 		}
 
@@ -14,9 +14,9 @@ return {
 				request = "launch",
 				name = "Launch file",
 				program = "${file}",
-				pythonPath = function()
-					return "/Users/yozhijk/dev/libs/miniforge3/bin/python"
-				end,
+				--pythonPath = function()
+				--	return "/Users/yozhijk/dev/libs/miniforge3/bin/python"
+				--end,
 			},
 		}
 		local keymap = vim.keymap
