@@ -25,6 +25,12 @@ return {
 				-- See `:help vim.lsp.*` for documentation on any of the below functions
 				local opts = { buffer = ev.buf, silent = true }
 
+				-- --> NEW: Enable Inlay Hints (for Neovim 0.10+)
+				-- This turns them on automatically when the file opens
+				if vim.lsp.inlay_hint then
+					vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
+				end
+
 				-- set keybinds
 				opts.desc = "Show LSP references"
 				keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references

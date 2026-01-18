@@ -27,7 +27,6 @@ return {
 			ensure_installed = {
 				"lua_ls",
 				"pyright",
-				"rust_analyzer",
 			},
 			handlers = {
 				-- The first entry is the "default" handler.
@@ -73,14 +72,6 @@ return {
 						},
 					})
 				end,
-
-				["rust_analyzer"] = function()
-					require("lspconfig").rust_analyzer.setup({
-						capabilities = require("cmp_nvim_lsp").default_capabilities(), -- Make sure capabilities is defined
-						on_attach = require("cmp_nvim_lsp").on_attach, -- in the right scope
-						filetypes = { "rust" },
-					})
-				end,
 			},
 		},
 	},
@@ -100,6 +91,7 @@ return {
 				"clang-format", -- C/C++ formatter
 				"pylint", -- Python linter
 				"debugpy", -- Python debugger
+				"codelldb",
 			},
 		},
 	},
