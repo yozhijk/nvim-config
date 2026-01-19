@@ -38,5 +38,11 @@ return {
 		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 		keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
 		keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Fuzzy find open buffers" })
+		keymap.set(
+			"n",
+			"<leader>fl",
+			require("telescope.builtin").current_buffer_fuzzy_find,
+			{ desc = "Fuzzy find in current buffer" }
+		)
 	end,
 }
