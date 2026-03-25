@@ -11,6 +11,14 @@ return {
 		"folke/todo-comments.nvim",
 	},
 	config = function()
+		-- Workaround for nvim-treesitter removing ft_to_lang (nvim 0.12+)
+		local ok, ts_parsers = pcall(require, "nvim-treesitter.parsers")
+		if ok and not ts_parsers.ft_to_lang then
+			ts_parsers.ft_to_lang = function(ft)
+				return vim.treesitter.language.get_lang(ft) or ft
+			end
+		end
+
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
 
