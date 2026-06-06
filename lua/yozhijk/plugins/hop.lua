@@ -1,9 +1,11 @@
 return {
-	"phaazon/hop.nvim",
-	config = function()
-		-- you can configure Hop the way you like here; see :h hop-config
-		--
-		require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
+	"smoka7/hop.nvim",
+	version = "*",
+	opts = {
+		keys = "etovxqpdygfblzhckisuran",
+	},
+	config = function(_, opts)
+		require("hop").setup(opts)
 
 		-- set keymaps
 		local keymap = vim.keymap -- for conciseness
