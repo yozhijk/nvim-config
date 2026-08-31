@@ -19,12 +19,26 @@ return {
 			end
 		end
 
+		-- Workaround for nvim-treesitter removing the configs module entirely (nvim 0.12+)
+		if not pcall(require, "nvim-treesitter.configs") then
+			package.preload["nvim-treesitter.configs"] = function()
+				return {
+					is_enabled = function(_, lang, bufnr)
+						return pcall(vim.treesitter.get_parser, bufnr, lang) and true or false
+					end,
+				}
+			end
+		end
+
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
 
 		telescope.setup({
 			defaults = {
 				path_display = { "smart" },
+				preview = {
+					treesitter = false,
+				},
 				mappings = {
 					i = {
 						["<C-k>"] = actions.move_selection_previous, -- move to prev result
